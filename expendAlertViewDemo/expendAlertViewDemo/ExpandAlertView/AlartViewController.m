@@ -52,7 +52,7 @@
     [OKlayer setZPosition:-1];
     [self.titleView.layer addSublayer:OKlayer];
     editLayer = [[CALayer alloc] init];
-    [editLayer setFrame:CGRectMake(140, 90, 140, 50)];
+    [editLayer setFrame:CGRectMake(140, 90 , 140, 50)];
     [editLayer setAnchorPoint:CGPointMake(0.5, 1)];
     [editLayer setBackgroundColor:[UIColor orangeColor].CGColor];
     [editLayer setZPosition:-1];
