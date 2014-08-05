@@ -17,6 +17,7 @@
     UIView *positiveView;
     UIView *negativeView;
     UIButton *cancelButton;
+    UILabel *titleLabel;
 
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,12 +49,6 @@
     [positiveLabel setTextAlignment:NSTextAlignmentCenter];
     [positiveLabel setTextColor:[UIColor lightTextColor]];
     [positiveView addSubview:positiveLabel];
-    
-//    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(positiveAction)];
-//    [positiveView addGestureRecognizer:recognizer];
-//    UIButton *positiveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, positiveView.frame.size.width, positiveView.frame.size.height)];
-//    [positiveButton addTarget:self action:@selector(positiveAction) forControlEvents:UIControlEventTouchUpInside];
-//    [positiveView addSubview:positiveButton];
     [self.titleView addSubview:positiveView];
     
     negativeView = [[UIView alloc] init];
@@ -68,19 +63,15 @@
     [negativeLabel setTextAlignment:NSTextAlignmentCenter];
     [negativeLabel setTextColor:[UIColor lightTextColor]];
     [negativeView addSubview:negativeLabel];
-    
-    UIButton *nagetiveButtton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, negativeView.frame.size.width, negativeView.frame.size.height)];
-    [nagetiveButtton addTarget:self action:@selector(nagetiveAction) forControlEvents:UIControlEventTouchUpInside];
-    [negativeView addSubview:nagetiveButtton];
     [self.titleView addSubview:negativeView];
     
     UIView* titleHolder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.titleView.frame.size.width, self.titleView.frame.size.height)];
     [titleHolder setBackgroundColor:[UIColor colorWithRed:0.20 green:0.25 blue:0.33 alpha:1]];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 120)];
-    [label setText:@"alertView"];
-    [label setTextAlignment:NSTextAlignmentCenter];
-    [label setTextColor:[UIColor lightTextColor]];
-    [titleHolder addSubview:label];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 120)];
+    [titleLabel setText:@"alertView"];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setTextColor:[UIColor lightTextColor]];
+    [titleHolder addSubview:titleLabel];
     [self.titleView addSubview:titleHolder];
     [self.titleView.layer setZPosition:1];
     
@@ -93,7 +84,8 @@
     [cancelButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelButton];
     
-    
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nagetiveAction:)];
+    [self.view addGestureRecognizer:gesture];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -106,18 +98,22 @@
 {
     [super viewDidAppear:animated];
 
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         [self.titleView setFrame:CGRectMake(self.titleView.frame.origin.x, 160, self.titleView.frame.size.width, self.titleView.frame.size.height)];
     }];
     CAKeyframeAnimation *animation = [[CAKeyframeAnimation alloc] init];
     [animation setDelegate:self];
-    animation.values = @[@(M_PI/64),@(-M_PI/64),@(M_PI/64),@(-M_PI/64),@(M_PI/64),@(M_PI/64),@(-M_PI/64),@(M_PI/64),@(-M_PI/64),@(M_PI/64),@(0)];
+    animation.values = @[@(M_PI/64),@(-M_PI/64),@(M_PI/64),@(0)];
     animation.duration = 0.5;
     [animation setKeyPath:@"transform.rotation"];
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
     [self.titleView.layer addAnimation:animation forKey:@"shake"];
-    [self.titleView.layer animationForKey:@"shake"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,20 +143,18 @@
             animation.removedOnCompletion = NO;
             animation.fillMode = kCAFillModeForwards;
             [positiveView.layer addAnimation:animation forKey:@"rotate"];
-            [animation setDelegate:self];
         }
         else if([anim isEqual:[positiveView.layer animationForKey:@"rotate"]])
         {
-            CATransform3D trans2 = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 1, 0, 0), CGPointMake(0, 0), 200) ;
-            CABasicAnimation *animation2 = [[CABasicAnimation alloc] init];
-            [animation2 setDelegate:self];
-            animation2.keyPath = @"transform";
-            animation2.toValue = [NSValue valueWithCATransform3D:trans2];
-            animation2.duration = 0.25;
-            animation2.removedOnCompletion = NO;
-            animation2.fillMode = kCAFillModeForwards;
-            [negativeView.layer addAnimation:animation2 forKey:@"rotate2"];
-            [animation2 setDelegate:self];
+            CATransform3D trans = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 1, 0, 0), CGPointMake(0, 0), 200) ;
+            CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+            [animation setDelegate:self];
+            animation.keyPath = @"transform";
+            animation.toValue = [NSValue valueWithCATransform3D:trans];
+            animation.duration = 0.25;
+            animation.removedOnCompletion = NO;
+            animation.fillMode = kCAFillModeForwards;
+            [negativeView.layer addAnimation:animation forKey:@"rotate2"];
         }
         else if ([anim isEqual:[negativeView.layer animationForKey:@"rotate2"]])
         {
@@ -171,8 +165,41 @@
             rotateAnimation.fromValue = [NSNumber numberWithFloat:0.0];
             rotateAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
             rotateAnimation.duration = 0.75;
-            
             [cancelButton.layer addAnimation:rotateAnimation forKey:@"rotate3"];
+        }
+        else if([anim isEqual:[self.titleView.layer animationForKey:@"rotate"]])
+        {
+            [titleLabel setText:@"Are you sure  ？"];
+        }
+        else if ([anim isEqual:[positiveView.layer animationForKey:@"close"]])
+        {
+            CATransform3D transFrom = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 1, 0, 0), CGPointMake(0, 0), 200);
+            CATransform3D trans = CATransform3DIdentity ;
+            CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+            [animation setDelegate:self];
+            animation.keyPath = @"transform";
+            animation.fromValue = [NSValue valueWithCATransform3D:transFrom];
+            animation.toValue = [NSValue valueWithCATransform3D:trans];
+            animation.duration = 0.25;
+            animation.removedOnCompletion = NO;
+            animation.fillMode = kCAFillModeForwards;
+            [negativeView.layer addAnimation:animation forKey:@"close2"];
+        }
+        else if ([anim isEqual:[negativeView.layer animationForKey:@"close2"]])
+        {
+            CATransform3D trans = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 0, 1, 0), CGPointMake(0, 0), 200) ;
+            CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+            [animation setDelegate:self];
+            animation.keyPath = @"transform";
+            animation.toValue = [NSValue valueWithCATransform3D:trans];
+            animation.duration = 0.5;
+            animation.removedOnCompletion = NO;
+            [self.titleView.layer addAnimation:animation forKey:@"surerotate"];
+        }
+        else if ([anim isEqual:[self.titleView.layer animationForKey:@"surerotate"]])
+        {
+            [titleLabel setText:@"success！"];
+            [self performSelector:@selector(cancelAction) withObject:self afterDelay:1];
         }
     }
 }
@@ -203,13 +230,40 @@ CA_EXTERN CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, f
     }];
 }
 
-- (void)positiveAction
+- (void)nagetiveAction:(UIGestureRecognizer*) gesture
 {
-    
-}
-
-- (void)nagetiveAction
-{
-    
+    CGPoint touchPoint = [gesture locationInView:self.titleView];
+    if ([negativeView.layer.presentationLayer hitTest:touchPoint])
+    {
+        NSLog(@"nagetiveAction");
+        [self cancelAction];
+    }
+    else if([positiveView.layer.presentationLayer hitTest:touchPoint])
+    {
+        if (self.titleView.layer.animationKeys.count>1)
+        {
+            CATransform3D transFrom = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 1, 0, 0), CGPointMake(0, 0), 200);
+            CATransform3D trans = CATransform3DIdentity ;
+            CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+            [animation setDelegate:self];
+            animation.keyPath = @"transform";
+            animation.fromValue = [NSValue valueWithCATransform3D:transFrom];
+            animation.toValue = [NSValue valueWithCATransform3D:trans];
+            animation.duration = 0.25;
+            animation.removedOnCompletion = NO;
+            animation.fillMode = kCAFillModeForwards;
+            [positiveView.layer addAnimation:animation forKey:@"close"];
+        }else
+        {
+            CATransform3D trans = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 0, 1, 0), CGPointMake(0, 0), 200) ;
+            CABasicAnimation *animation = [[CABasicAnimation alloc] init];
+            [animation setDelegate:self];
+            animation.keyPath = @"transform";
+            animation.toValue = [NSValue valueWithCATransform3D:trans];
+            animation.duration = 0.5;
+            animation.removedOnCompletion = NO;
+            [self.titleView.layer addAnimation:animation forKey:@"rotate"];
+        }
+    }
 }
 @end
