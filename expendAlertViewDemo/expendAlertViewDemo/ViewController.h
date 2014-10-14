@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "AlartViewController.h"
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ExpendableAlartViewDelegate>
 
 @end

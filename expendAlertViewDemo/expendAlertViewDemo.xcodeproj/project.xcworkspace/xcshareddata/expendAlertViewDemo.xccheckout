@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2A6771D4-F1A2-451F-A612-F01C88CE64DF</string>
+	<string>99E4972C-F397-4858-B583-5926AFCC3E84</string>
 	<key>IDESourceControlProjectName</key>
 	<string>expendAlertViewDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>076B122E-E203-4674-8BEF-C61F4A1E8158</key>
-		<string>https://github.com/denty/denty_code.git</string>
+		<key>19E99A37-731F-4FEF-B0CF-787771701B4C</key>
+		<string>https://github.com/denty/ExpandAlertView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>expendAlertViewDemo/expendAlertViewDemo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>076B122E-E203-4674-8BEF-C61F4A1E8158</key>
+		<key>19E99A37-731F-4FEF-B0CF-787771701B4C</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/denty/denty_code.git</string>
+	<string>https://github.com/denty/ExpandAlertView.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>076B122E-E203-4674-8BEF-C61F4A1E8158</string>
+	<string>19E99A37-731F-4FEF-B0CF-787771701B4C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>076B122E-E203-4674-8BEF-C61F4A1E8158</string>
+			<string>19E99A37-731F-4FEF-B0CF-787771701B4C</string>
 			<key>IDESourceControlWCCName</key>
-			<string>denty_code</string>
+			<string>ExpandAlertView</string>
 		</dict>
 	</array>
 </dict>

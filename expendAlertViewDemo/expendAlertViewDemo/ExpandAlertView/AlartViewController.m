@@ -81,7 +81,7 @@
     [cancelButton.layer setCornerRadius:15];
     [cancelButton setTitle:@"x" forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor lightTextColor] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelButton];
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nagetiveAction:)];
@@ -218,6 +218,12 @@ CA_EXTERN CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, f
     return CATransform3DConcat(t, CATransform3DMakePerspective(center, disZ));
 }
 
+- (void)cancelClick
+{
+    [self.expendAbleAlartViewDelegate closeButtonAction];
+    [self cancelAction];
+}
+
 - (void)cancelAction
 {
     [UIView animateWithDuration:0.5 animations:^{
@@ -235,11 +241,13 @@ CA_EXTERN CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, f
     CGPoint touchPoint = [gesture locationInView:self.titleView];
     if ([negativeView.layer.presentationLayer hitTest:touchPoint])
     {
-        NSLog(@"nagetiveAction");
+        [self.expendAbleAlartViewDelegate positiveButtonAction];
+//        NSLog(@"nagetiveAction");
         [self cancelAction];
     }
     else if([positiveView.layer.presentationLayer hitTest:touchPoint])
     {
+        [self.expendAbleAlartViewDelegate positiveButtonAction];
         if (self.titleView.layer.animationKeys.count>1)
         {
             CATransform3D transFrom = CATransform3DPerspect(CATransform3DMakeRotation(-M_PI-0.0001, 1, 0, 0), CGPointMake(0, 0), 200);

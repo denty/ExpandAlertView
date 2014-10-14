@@ -474,6 +474,7 @@
 				ECA3E6F1198F6FC20029EF9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ECA3E6F2198F6FC20029EF9E /* Build configuration list for PBXNativeTarget "expendAlertViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +483,7 @@
 				ECA3E6F4198F6FC20029EF9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

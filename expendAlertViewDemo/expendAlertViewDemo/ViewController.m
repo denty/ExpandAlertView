@@ -35,7 +35,23 @@
 {
     NSLog(@"buttonAction");
     AlartViewController *aAlartViewController = [[AlartViewController alloc] init];
+    aAlartViewController.expendAbleAlartViewDelegate = self;
     __weak UIViewController *weakVC = self;
     [aAlartViewController showView:weakVC];
+}
+
+- (void)negativeButtonAction
+{
+    NSLog(@"negative Action");
+}
+
+- (void)positiveButtonAction
+{
+    NSLog(@"positive Action");
+}
+
+- (void)closeButtonAction
+{
+    NSLog(@"close Action");
 }
 @end
