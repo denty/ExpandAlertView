@@ -10,29 +10,29 @@
 	<string>expendAlertViewDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>19E99A37-731F-4FEF-B0CF-787771701B4C</key>
+		<key>D9BE9392C4FAEFF66E36F4E374B0B69F9514C411</key>
 		<string>https://github.com/denty/ExpandAlertView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>expendAlertViewDemo/expendAlertViewDemo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>19E99A37-731F-4FEF-B0CF-787771701B4C</key>
+		<key>D9BE9392C4FAEFF66E36F4E374B0B69F9514C411</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/denty/ExpandAlertView.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>19E99A37-731F-4FEF-B0CF-787771701B4C</string>
+	<string>D9BE9392C4FAEFF66E36F4E374B0B69F9514C411</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>19E99A37-731F-4FEF-B0CF-787771701B4C</string>
+			<string>D9BE9392C4FAEFF66E36F4E374B0B69F9514C411</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ExpandAlertView</string>
 		</dict>
