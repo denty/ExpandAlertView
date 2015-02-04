@@ -14,7 +14,7 @@
 		<string>https://github.com/denty/ExpandAlertView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>expendAlertViewDemo/expendAlertViewDemo.xcodeproj/project.xcworkspace</string>
+	<string>expendAlertViewDemo/expendAlertViewDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D9BE9392C4FAEFF66E36F4E374B0B69F9514C411</key>

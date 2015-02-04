@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF6AFBF71A81ECF2008858CA /* openScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6AFBF61A81ECF2008858CA /* openScreen.xib */; };
 		ECA3E6C1198F6FC10029EF9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA3E6C0198F6FC10029EF9E /* Foundation.framework */; };
 		ECA3E6C3198F6FC10029EF9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA3E6C2198F6FC10029EF9E /* CoreGraphics.framework */; };
 		ECA3E6C5198F6FC10029EF9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA3E6C4198F6FC10029EF9E /* UIKit.framework */; };
 		ECA3E6CB198F6FC10029EF9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECA3E6C9198F6FC10029EF9E /* InfoPlist.strings */; };
 		ECA3E6CD198F6FC10029EF9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA3E6CC198F6FC10029EF9E /* main.m */; };
 		ECA3E6D1198F6FC10029EF9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA3E6D0198F6FC10029EF9E /* AppDelegate.m */; };
-		ECA3E6D4198F6FC10029EF9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECA3E6D2198F6FC10029EF9E /* Main.storyboard */; };
 		ECA3E6D7198F6FC10029EF9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA3E6D6198F6FC10029EF9E /* ViewController.m */; };
 		ECA3E6D9198F6FC10029EF9E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA3E6D8198F6FC10029EF9E /* Images.xcassets */; };
 		ECA3E6E0198F6FC10029EF9E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA3E6DF198F6FC10029EF9E /* XCTest.framework */; };
@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF6AFBF61A81ECF2008858CA /* openScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = openScreen.xib; sourceTree = "<group>"; };
 		ECA3E6BD198F6FC10029EF9E /* expendAlertViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expendAlertViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA3E6C0198F6FC10029EF9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ECA3E6C2198F6FC10029EF9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,7 +47,6 @@
 		ECA3E6CE198F6FC10029EF9E /* expendAlertViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "expendAlertViewDemo-Prefix.pch"; sourceTree = "<group>"; };
 		ECA3E6CF198F6FC10029EF9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ECA3E6D0198F6FC10029EF9E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ECA3E6D3198F6FC10029EF9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECA3E6D5198F6FC10029EF9E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ECA3E6D6198F6FC10029EF9E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ECA3E6D8198F6FC10029EF9E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -119,10 +119,10 @@
 			children = (
 				ECA3E6CF198F6FC10029EF9E /* AppDelegate.h */,
 				ECA3E6D0198F6FC10029EF9E /* AppDelegate.m */,
-				ECA3E6D2198F6FC10029EF9E /* Main.storyboard */,
 				ECA3E6D5198F6FC10029EF9E /* ViewController.h */,
-				ECA3E6F5198F711C0029EF9E /* ExpandAlertView */,
+				BF6AFBF61A81ECF2008858CA /* openScreen.xib */,
 				ECA3E6D6198F6FC10029EF9E /* ViewController.m */,
+				ECA3E6F5198F711C0029EF9E /* ExpandAlertView */,
 				ECA3E6D8198F6FC10029EF9E /* Images.xcassets */,
 				ECA3E6C7198F6FC10029EF9E /* Supporting Files */,
 			);
@@ -245,8 +245,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA3E6D9198F6FC10029EF9E /* Images.xcassets in Resources */,
+				BF6AFBF71A81ECF2008858CA /* openScreen.xib in Resources */,
 				ECA3E6CB198F6FC10029EF9E /* InfoPlist.strings in Resources */,
-				ECA3E6D4198F6FC10029EF9E /* Main.storyboard in Resources */,
 				ECA3E6FA198F711C0029EF9E /* AlartViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,14 +298,6 @@
 				ECA3E6CA198F6FC10029EF9E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		ECA3E6D2198F6FC10029EF9E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ECA3E6D3198F6FC10029EF9E /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		ECA3E6E8198F6FC10029EF9E /* InfoPlist.strings */ = {
@@ -393,10 +385,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "expendAlertViewDemo/expendAlertViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "expendAlertViewDemo/expendAlertViewDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -406,10 +398,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "expendAlertViewDemo/expendAlertViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "expendAlertViewDemo/expendAlertViewDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     UIButton *alertButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 200, 120, 50)];
     [alertButton setBackgroundColor:[UIColor orangeColor]];
     [alertButton addTarget:self action:@selector(alertAction) forControlEvents:UIControlEventTouchUpInside];
@@ -36,6 +37,7 @@
     NSLog(@"buttonAction");
     AlartViewController *aAlartViewController = [[AlartViewController alloc] init];
     aAlartViewController.expendAbleAlartViewDelegate = self;
+    aAlartViewController.expendAbleAlartViewDataSource = self;
     __weak UIViewController *weakVC = self;
     [aAlartViewController showView:weakVC];
 }
@@ -53,5 +55,35 @@
 - (void)closeButtonAction
 {
     NSLog(@"close Action");
+}
+
+- (NSString *)loadTextWithNegativeTitle
+{
+//    return nil;
+    return @"取消";
+}
+
+- (NSString *)loadTextWithTitle
+{
+//    return nil;
+    return @"注意，真的要这样么";
+}
+
+- (NSString *)loadTextWithPositiveTitle
+{
+//    return nil;
+    return @"确定";
+}
+
+- (NSString *)loadTextWithEnsureTitle
+{
+//    return nil;
+    return @"确定么？";
+}
+
+- (NSString *)loadTextWithConfirmTitle
+{
+//    return nil;
+    return @"操作成功";
 }
 @end

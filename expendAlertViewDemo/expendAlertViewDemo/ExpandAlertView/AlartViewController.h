@@ -7,16 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define DEVICE_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define DEVICE_WIDTH  ([[UIScreen mainScreen] bounds].size.width)
 @protocol ExpendableAlartViewDelegate <NSObject>
 
 - (void)positiveButtonAction;
 - (void)negativeButtonAction;
 - (void)closeButtonAction;
 @end
+
+@protocol ExpendableAlartViewDataSource <NSObject>
+
+- (NSString *)loadTextWithTitle;
+- (NSString *)loadTextWithPositiveTitle;
+- (NSString *)loadTextWithNegativeTitle;
+- (NSString *)loadTextWithConfirmTitle;
+- (NSString *)loadTextWithEnsureTitle;
+@end
+
 @interface AlartViewController : UIViewController
 @property (nonatomic,strong) UIView *titleView;
+
 @property (nonatomic,weak) id<ExpendableAlartViewDelegate> expendAbleAlartViewDelegate;
+@property (nonatomic,weak) id<ExpendableAlartViewDataSource> expendAbleAlartViewDataSource;
 - (void)showView:(UIViewController *)VC;
 CA_EXTERN CATransform3D CATransform3DMakePerspective(CGPoint center, float disZ);
 

@@ -18,7 +18,16 @@
     UIView *negativeView;
     UIButton *cancelButton;
     UILabel *titleLabel;
-
+    
+    NSString *titleText;
+    NSString *positiveText;
+    NSString *negativeText;
+    NSString *ensureTitleText;
+    NSString *confirmText;
+    
+    UIColor *titleViewColor;
+    UIColor *positiveButtonColor;
+    UIColor *negativeButtonColor;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,50 +41,89 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    titleText = [self.expendAbleAlartViewDataSource loadTextWithTitle];
+    positiveText = [self.expendAbleAlartViewDataSource loadTextWithPositiveTitle];
+    negativeText = [self.expendAbleAlartViewDataSource loadTextWithNegativeTitle];
+    ensureTitleText = [self.expendAbleAlartViewDataSource loadTextWithEnsureTitle];
+    confirmText = [self.expendAbleAlartViewDataSource loadTextWithConfirmTitle];
+    
     [self.view setBackgroundColor:[UIColor  colorWithRed:0 green:0 blue:0 alpha:0.5]];
-    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(20, -70, 280, 120)];
+    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(20, -70, DEVICE_WIDTH-40, 120)];
     [self.titleView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.titleView];
     
+
     positiveView = [[UIView alloc] init];
-    [positiveView setFrame:CGRectMake(0, 90, 140, 50)];
+    [positiveView setFrame:CGRectMake(0, 90, self.titleView.frame.size.width/2, 50)];
     [positiveView.layer setAnchorPoint:CGPointMake(0.5, 1)];
-    [positiveView setBackgroundColor:[UIColor colorWithRed:0.20 green:0.28 blue:0.41 alpha:1]];
+    if (positiveButtonColor == nil) {
+        [positiveView setBackgroundColor:[UIColor colorWithRed:0.20 green:0.28 blue:0.41 alpha:1]];
+    }else
+    {
+        [positiveView setBackgroundColor:positiveButtonColor];
+    }
     [positiveView.layer setZPosition:-1];
-    
-    UILabel *positiveLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 50)];
+    UILabel *positiveLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, positiveView.frame.size.width, 50)];
     positiveLabel.layer.transform = CATransform3DMakeRotation(M_PI, 1, 0, 0);
-    [positiveLabel setText:@"positive"];
+    if (titleText.length>0) {
+        [positiveLabel setText:positiveText];
+    }else
+    {
+        [positiveLabel setText:@"positive"];
+    }
     [positiveLabel setTextAlignment:NSTextAlignmentCenter];
     [positiveLabel setTextColor:[UIColor lightTextColor]];
     [positiveView addSubview:positiveLabel];
     [self.titleView addSubview:positiveView];
     
+
     negativeView = [[UIView alloc] init];
-    [negativeView setFrame:CGRectMake(140, 90, 140, 50)];
+    [negativeView setFrame:CGRectMake(self.titleView.frame.size.width/2, 90, self.titleView.frame.size.width/2, 50)];
     [negativeView.layer setAnchorPoint:CGPointMake(0.5, 1)];
-    [negativeView setBackgroundColor:[UIColor colorWithRed:0.26 green:0.33 blue:0.48 alpha:1]];
+    if (negativeButtonColor == nil) {
+        [negativeView setBackgroundColor:[UIColor colorWithRed:0.26 green:0.33 blue:0.48 alpha:1]];
+    }else
+    {
+        [negativeView setBackgroundColor:negativeButtonColor];
+    }
     [negativeView.layer setZPosition:-1];
-    
-    UILabel *negativeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 50)];
+    UILabel *negativeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.titleView.frame.size.width/2, 50)];
     negativeLabel.layer.transform = CATransform3DMakeRotation(M_PI, 1, 0, 0);
-    [negativeLabel setText:@"negative"];
+    if (negativeText.length>0) {
+        [negativeLabel setText:negativeText];
+    }else
+    {
+        [negativeLabel setText:@"negative"];
+    }
     [negativeLabel setTextAlignment:NSTextAlignmentCenter];
     [negativeLabel setTextColor:[UIColor lightTextColor]];
     [negativeView addSubview:negativeLabel];
     [self.titleView addSubview:negativeView];
+
     
     UIView* titleHolder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.titleView.frame.size.width, self.titleView.frame.size.height)];
-    [titleHolder setBackgroundColor:[UIColor colorWithRed:0.20 green:0.25 blue:0.33 alpha:1]];
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 120)];
-    [titleLabel setText:@"alertView"];
+    
+    if (titleViewColor == nil) {
+        [titleHolder setBackgroundColor:[UIColor colorWithRed:0.20 green:0.25 blue:0.33 alpha:1]];
+    }else
+    {
+        [titleHolder setBackgroundColor:titleViewColor];
+    }
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.titleView.frame.size.width, 120)];
+    if (titleText.length>0) {
+        [titleLabel setText:titleText];
+    }else
+    {
+        [titleLabel setText:@"alertView"];
+    }
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     [titleLabel setTextColor:[UIColor lightTextColor]];
     [titleHolder addSubview:titleLabel];
     [self.titleView addSubview:titleHolder];
     [self.titleView.layer setZPosition:1];
     
-    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(145, 600, 30, 30)];
+    
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-30)/2, DEVICE_HEIGHT, 30, 30)];
     [cancelButton.layer setBorderColor:[UIColor lightTextColor].CGColor];
     [cancelButton.layer setBorderWidth:1];
     [cancelButton.layer setCornerRadius:15];
@@ -83,7 +131,6 @@
     [cancelButton setTitleColor:[UIColor lightTextColor] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelButton];
-    
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nagetiveAction:)];
     [self.view addGestureRecognizer:gesture];
     // Do any additional setup after loading the view from its nib.
@@ -169,7 +216,12 @@
         }
         else if([anim isEqual:[self.titleView.layer animationForKey:@"rotate"]])
         {
-            [titleLabel setText:@"Are you sure  ？"];
+            if (ensureTitleText.length>0) {
+                [titleLabel setText:ensureTitleText];
+            }else
+            {
+                [titleLabel setText:@"Are you sure  ？"];
+            }
         }
         else if ([anim isEqual:[positiveView.layer animationForKey:@"close"]])
         {
@@ -198,7 +250,12 @@
         }
         else if ([anim isEqual:[self.titleView.layer animationForKey:@"surerotate"]])
         {
-            [titleLabel setText:@"success！"];
+            if (confirmText.length>0) {
+                [titleLabel setText:confirmText];
+            }else
+            {
+                [titleLabel setText:@"success！"];
+            }
             [self performSelector:@selector(cancelAction) withObject:self afterDelay:1];
         }
     }
@@ -227,8 +284,8 @@ CA_EXTERN CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, f
 - (void)cancelAction
 {
     [UIView animateWithDuration:0.5 animations:^{
-        [cancelButton setFrame:CGRectMake(cancelButton.frame.origin.x, 790, cancelButton.frame.size.width, cancelButton.frame.size.height)];
-        [self.titleView setFrame:CGRectMake(self.titleView.frame.origin.x, 600, self.titleView.frame.size.width, self.titleView.frame.size.height)];
+        [cancelButton setFrame:CGRectMake(cancelButton.frame.origin.x, DEVICE_HEIGHT+190, cancelButton.frame.size.width, cancelButton.frame.size.height)];
+        [self.titleView setFrame:CGRectMake(self.titleView.frame.origin.x, DEVICE_HEIGHT, self.titleView.frame.size.width, self.titleView.frame.size.height)];
         
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
