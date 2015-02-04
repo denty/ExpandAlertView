@@ -86,4 +86,9 @@
 //    return nil;
     return @"操作成功";
 }
+
+//- (UIColor *)loadTitleViewColor
+//{
+//    return [UIColor greenColor];
+//}
 @end

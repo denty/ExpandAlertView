@@ -41,11 +41,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    titleText = [self.expendAbleAlartViewDataSource loadTextWithTitle];
-    positiveText = [self.expendAbleAlartViewDataSource loadTextWithPositiveTitle];
-    negativeText = [self.expendAbleAlartViewDataSource loadTextWithNegativeTitle];
-    ensureTitleText = [self.expendAbleAlartViewDataSource loadTextWithEnsureTitle];
-    confirmText = [self.expendAbleAlartViewDataSource loadTextWithConfirmTitle];
+//  title set
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadTextWithTitle)]) {
+        titleText = [self.expendAbleAlartViewDataSource loadTextWithTitle];
+    }
+    
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadTextWithPositiveTitle)]) {
+        positiveText = [self.expendAbleAlartViewDataSource loadTextWithPositiveTitle];
+    }
+    
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadTextWithNegativeTitle)]) {
+        negativeText = [self.expendAbleAlartViewDataSource loadTextWithNegativeTitle];
+    }
+    
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadTextWithEnsureTitle)]) {
+        ensureTitleText = [self.expendAbleAlartViewDataSource loadTextWithEnsureTitle];
+    }
+    
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadTextWithConfirmTitle)]) {
+        confirmText = [self.expendAbleAlartViewDataSource loadTextWithConfirmTitle];
+    }
+//  color set
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadTitleViewColor)]) {
+        titleViewColor = [self.expendAbleAlartViewDataSource loadTitleViewColor];
+    }
+    
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadPositiveViewColor)]) {
+        positiveButtonColor = [self.expendAbleAlartViewDataSource loadPositiveViewColor];
+    }
+    
+    if ([self.expendAbleAlartViewDataSource respondsToSelector:@selector(loadNegativeViewColor)]) {
+        negativeButtonColor = [self.expendAbleAlartViewDataSource loadNegativeViewColor];
+    }
     
     [self.view setBackgroundColor:[UIColor  colorWithRed:0 green:0 blue:0 alpha:0.5]];
     self.titleView = [[UIView alloc] initWithFrame:CGRectMake(20, -70, DEVICE_WIDTH-40, 120)];

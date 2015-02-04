@@ -18,11 +18,16 @@
 
 @protocol ExpendableAlartViewDataSource <NSObject>
 
+@optional
 - (NSString *)loadTextWithTitle;
 - (NSString *)loadTextWithPositiveTitle;
 - (NSString *)loadTextWithNegativeTitle;
 - (NSString *)loadTextWithConfirmTitle;
 - (NSString *)loadTextWithEnsureTitle;
+
+- (UIColor *)loadTitleViewColor;
+- (UIColor *)loadPositiveViewColor;
+- (UIColor *)loadNegativeViewColor;
 @end
 
 @interface AlartViewController : UIViewController
